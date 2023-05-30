@@ -29,6 +29,7 @@ args_parser.add_argument('commands_file', default=DEFAULT_FILE_NAME, nargs='?')
 args_parser.add_argument('-c', '--compile', action='store_true', default=False)
 args_parser.add_argument('-o', '--outputs', default=OUTPUT_DIR, nargs='?')
 args_parser.add_argument('-n', '--number_of_runs', default=NUM_OF_RUNS, nargs='?')
+args_parser.add_argument('-d', '--delete', action='store_true', default=False)
 args = args_parser.parse_args()
 
 # create shell files 
@@ -70,6 +71,7 @@ if not args.compile:
                 os.execv("/bin/bash", ["/bin/bash", f"commands{i}.sh"]) # maybe add args?
             time.sleep(SLEEP_TIME)
         # wait the important chileds to die
+        #TODO: check how to get data from the childs, maybe pips?
         for pid in must_end_pids:
             _ = os.waitpid(pid, 0)
         for pid in pids:
@@ -77,3 +79,6 @@ if not args.compile:
                 os.kill(pid, signal.SIGKILL)
             except OSError:
                 pass
+if args.delete:
+    # remove old shell files
+    os.system("rm commands[0-9]*.sh > /dev/null")
