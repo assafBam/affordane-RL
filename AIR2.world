@@ -84,7 +84,7 @@
       <pose>-3.12399 -2.98513 0.04 0 -0 0</pose>
       <link name='link'>
         <inertial>
-          <mass>0.015</mass>
+          <mass>0.044</mass>
           <inertia>
             <ixx>0.1</ixx>
             <ixy>0</ixy>
@@ -118,12 +118,12 @@
         <visual name='visual'>
           <geometry>
             <sphere>
-              <radius>0.04</radius>
+              <radius>0.046</radius>
             </sphere>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
+              <name>Gazebo/Yellow</name>
               <uri>file://media/materials/scripts/gazebo.material</uri>
             </script>
           </material>
