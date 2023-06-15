@@ -1,5 +1,21 @@
 #!/usr/bin/env python
 
+###########################################################
+########### log the position of the ball helper ###########
+PIPE_ENV_VAR = 'AIR2_PIPE_WRITE'
+
+def get_final_ball_pos_logger():
+    import os
+    pipe_write_fd = int(os.environ.get(PIPE_ENV_VAR, os.sys.stdout.fileno()))
+    pipe_write = os.fdopen(pipe_write_fd)
+    def log_x(x):
+        pipe_write.write(bytes('{}\n'.format(x), 'ascii'))
+    return log_x
+
+final_position_logger = get_final_ball_pos_logger()
+###########################################################
+
+
 import rospy
 import yaml
 import os
