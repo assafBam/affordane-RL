@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python2
 from __future__ import print_function
 
 DEBUG = True
@@ -7,6 +7,7 @@ SLEEP_TIME = 0.1 # in seconds
 debug = lambda *args: print(*args) if DEBUG else lambda *args: None
 
 import os
+import fcntl
 import sys
 import time
 import argparse
@@ -57,7 +58,9 @@ for i, c in enumerate(commands_list):
 # run the commands, only if '-c' was not specified in the command line
 if not args.compile:
     # create pipe for reading the final positions:
-    pipe_r, pipe_w = os.pipe2(os.O_NONBLOCK)
+    pipe_r, pipe_w = os.pipe()
+    fcntl.fcntl(pipe_r, fcntl.F_SETFL, os.O_NONBLOCK) 
+    pipe_read_file = os.fdopen(pipe_r)
     # setting an environment variable for the pipe
     os.environ[PIPE_ENV_VAR] = "{}".format(pipe_w)
 
@@ -78,6 +81,7 @@ if not args.compile:
                     must_end_pids.append(pid)
             else:
                 os.close(pipe_r)
+                # os.write(pipe_w, b'#')
                 # os.set_inheritable(pipe_w, True)
                 fdout = os.open(os.path.join(out_dir, 'output{i}.txt'.format(i=i)), os.O_WRONLY|os.O_CREAT|os.O_TRUNC)
                 fderr = os.open(os.path.join(out_dir, 'err{i}.txt'.format(i=i)), os.O_WRONLY|os.O_CREAT|os.O_TRUNC)
@@ -96,7 +100,8 @@ if not args.compile:
                 pass
     # read all the results
     os.close(pipe_w)
-    pipe_read_file = os.fdopen(pipe_r)
+    # pipe_read_file = os.fdopen(pipe_r)
+    # print(pipe_read_file.readlines())
     print(pipe_read_file.read()) #for now, print all the information. TODO: do something with the results
 
 if args.delete:
