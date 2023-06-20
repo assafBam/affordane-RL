@@ -25,19 +25,9 @@ from rospy import Duration
 
 from gazebo_msgs.msg import ModelStates
 
-###########################################################
-########### log the position of the ball helper ###########
-PIPE_ENV_VAR = 'AIR2_PIPE_WRITE'
-import os
-pipe_write_fd = int(os.environ.get(PIPE_ENV_VAR, os.sys.stdout.fileno()))
 
-def final_position_logger(x):
-    os.write(pipe_write_fd, bytes(str(x)+'\n', 'ascii'))
-
-###########################################################
-
-SPHERE_INIT_POS_X = 2.7
-SPHERE_INIT_POS_Y = -1.7
+SPHERE_INIT_POS_X = 0
+SPHERE_INIT_POS_Y = 0
 Processing_flag = False
 
 
