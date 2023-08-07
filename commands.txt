@@ -9,7 +9,7 @@ roslaunch MRS_236609 turtlebot3_AIR2.launch
 
 ------------------------------------------------------
 
-xvfb-run -s "-screen 0 1400x900x24" roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/my_ws/src/MRS_236609/maps/map3.yaml rviz:=true
+xvfb-run -s "-screen 0 1400x900x24" roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/my_ws/src/MRS_236609/maps/map3.yaml rviz:=true\
 
 ------------------------------------------------------
 
@@ -29,8 +29,8 @@ rostopic pub -1 /initialpose geometry_msgs/PoseWithCovarianceStamped "{
   },
   pose: {
     pose: {
-      position: { x: 1.0, y: 1.0, z: 0.0 },
-      orientation: { x: 1.0, y: 1.0, z: 0.0, w: 1.0 }
+      position: { x: -1.0, y: 0.0, z: 0.0 },
+      orientation: { x: 0.0, y: 0.0, z: 0.0, w: 1.0 }
     }
   }
 }"

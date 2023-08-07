@@ -138,10 +138,6 @@
       <real_time>87 520922173</real_time>
       <wall_time>1542261402 408777053</wall_time>
       <iterations>86984</iterations>
-      <model name='closed_building'>
-        <pose frame=''>-1.17542 -1.76635 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-      </model>
       <model name='unit_sphere'>
         <pose>0 0 0.5 0 -0 0</pose>
         <scale>1 1 1</scale>

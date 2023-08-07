@@ -47,7 +47,7 @@ def move_line():
     while rospy.Time.now() - start_time < duration:
         pub.publish(twist)
         r.sleep()
-    
+
     print("send stop message to the robot")
     stop_message = Twist()
     stop_message.angular.x = 0  # 0.5
@@ -59,10 +59,13 @@ def move_line():
     pub.publish(stop_message)
 
 ###########################################################################################################
+
+
 class TurtleBot:
     def __init__(self):
        # Subscribe to the model_states topic and specify the callback function
-        self.model_states_sub = rospy.Subscriber('/gazebo/model_states', ModelStates, callback=self.model_states_callback)
+        self.model_states_sub = rospy.Subscriber(
+            '/gazebo/model_states', ModelStates, callback=self.model_states_callback)
         self.initial_position = None
         rospy.Subscriber('/initialpose', PoseWithCovarianceStamped,
                          callback=self.set_initial_position)
@@ -73,7 +76,6 @@ class TurtleBot:
         while self.initial_position is None:
             continue
         print("The initial position is {}".format(self.initial_position))
- 
 
     def set_initial_position(self, msg):
         initial_pose = msg.pose.pose
@@ -82,29 +84,27 @@ class TurtleBot:
         print("initial position values {} , {} ".format(
             initial_pose.position.x, initial_pose.position.y))
 
-
-    def model_states_callback(self,msg):
-        #Get location only at the end
+    def model_states_callback(self, msg):
+        # Get location only at the end
         if not Processing_flag:
             return
         # Extract the position of the desired object
         model_index = msg.name.index('unit_sphere')
         position = msg.pose[model_index].position
-        
+
         # Access the x, y, and z coordinates
         x = position.x
         y = position.y
         z = position.z
-        
+
         # Process the object's location data
         # (e.g., print it or use it in further computations)
         print("Sphere location - x:", x, "y:", y, "z:", z)
-   
+
         # Unsubscribe from the model_states topic so we will get the return value only once
         self.model_states_sub.unregister()
         # Stop the ROS node and exit the program
         rospy.signal_shutdown('Sphere location processed')
-
 
     def _move_robot_to_point(self, x, y, w):
         # Create an action client called "move_base" with action definition file "MoveBaseAction"
@@ -150,9 +150,9 @@ class TurtleBot:
             rospy.loginfo("Navigation test finished.")
 
     def run(self, x, y):
-        print("move to point {},{}".format(x, y))
-        self.move_robot_to_point(x-0.25, y)
-        print("start moving towards the sphere")
+        print("need to come closer to point {},{}".format(x, y))
+        self.move_robot_to_point(x-0.5, y)
+        print("start moving towards the sphere".format(x-0.5, y))
         move_line()
         print("robot finished it's job")
 
@@ -162,8 +162,9 @@ if __name__ == '__main__':
     rospy.init_node('air2')
 
     tb3 = TurtleBot()
-    print("Sphere initial position: {}, {}".format(SPHERE_INIT_POS_X, SPHERE_INIT_POS_Y))
+    print("Sphere initial position: {}, {}".format(
+        SPHERE_INIT_POS_X, SPHERE_INIT_POS_Y))
     tb3.run(SPHERE_INIT_POS_X, SPHERE_INIT_POS_Y)
-     #TODO: collect sphere location and print it
-    Processing_flag = True #now we will get the loction
+    # TODO: collect sphere location and print it
+    Processing_flag = True  # now we will get the loction
     rospy.spin()
