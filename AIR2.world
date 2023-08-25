@@ -81,7 +81,8 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <model name='unit_sphere'>
-      <pose>-3.12399 -2.98513 0.04 0 -0 0</pose>
+      <pose>0 0 0 0 0 0</pose>
+      <static> false </static>
       <link name='link'>
         <inertial>
           <mass>0.044</mass>
@@ -93,7 +94,7 @@
             <iyz>0</iyz>
             <izz>0.1</izz>
           </inertia>
-          <pose>0 0 0 0 -0 0</pose>
+          <pose>0 0 0 0 0 0</pose>
         </inertial>
         <collision name='collision'>
           <geometry>
@@ -139,10 +140,10 @@
       <wall_time>1542261402 408777053</wall_time>
       <iterations>86984</iterations>
       <model name='unit_sphere'>
-        <pose>0 0 0.5 0 -0 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>0 0 0.5 0 -0 0</pose>
+          <pose>0 0 0 0 0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>

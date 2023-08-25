@@ -24,6 +24,9 @@ from geometry_msgs.msg import Twist
 from rospy import Duration
 
 from gazebo_msgs.msg import ModelStates
+import math
+from tf.transformations import euler_from_quaternion, quaternion_from_euler
+
 
 
 SPHERE_INIT_POS_X = 0
@@ -31,18 +34,20 @@ SPHERE_INIT_POS_Y = 0
 Processing_flag = False
 
 
-def move_line():
+def move_line(vel):
     twist = Twist()
     twist.angular.x = 0  # 0.5
     twist.angular.y = 0  # 0.5
     twist.angular.z = 0  # 0.5
-    twist.linear.x = 0.5
+    twist.linear.x = vel #0.22 is the max in turtulebot3 burger
     twist.linear.y = 0
     twist.linear.z = 0
 
     pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
-    r = rospy.Rate(2)
+    r = rospy.Rate(10)
     start_time = rospy.Time.now()
+    #TODO: set shorter interval, check location of sphere and save it, and if the location didn't change between 2 intervals, stop.
+    #TODO: get the location of the sphere by setting Proccesing_flag to True
     duration = rospy.Duration.from_sec(5)
     while rospy.Time.now() - start_time < duration:
         pub.publish(twist)
@@ -106,28 +111,28 @@ class TurtleBot:
         # Stop the ROS node and exit the program
         rospy.signal_shutdown('Sphere location processed')
 
-    def _move_robot_to_point(self, x, y, w):
+
+    def _move_robot_to_point(self, Theta_based_pose = PoseStamped()):
         # Create an action client called "move_base" with action definition file "MoveBaseAction"
         client = actionlib.SimpleActionClient('move_base', MoveBaseAction)
 
         # Waits until the action server has started up and started listening for goals.
-        print("Start - wait for server")
         client.wait_for_server()
-        print("End - wait for server")
 
         # Creates a new goal with the MoveBaseGoal constructor
         goal = MoveBaseGoal()
+        #goal.target_pose = Theta_based_pose
         goal.target_pose.header.frame_id = "map"
         goal.target_pose.header.stamp = rospy.Time.now()
-        # Move 0.5 meters forward along the x axis of the "map" coordinate frame
-        goal.target_pose.pose.position.x = x
-        # Move to position 0.5 on the y axis of the "map" coordinate frame
-        goal.target_pose.pose.position.y = y
-        # No rotation of the mobile base frame w.r.t. map frame
-        goal.target_pose.pose.orientation.w = w
+        goal.target_pose.pose.position.x = Theta_based_pose.pose.position.x
+        goal.target_pose.pose.position.y = Theta_based_pose.pose.position.y
+        goal.target_pose.pose.orientation.x = Theta_based_pose.pose.orientation.x
+        goal.target_pose.pose.orientation.y = Theta_based_pose.pose.orientation.y
+        goal.target_pose.pose.orientation.z = Theta_based_pose.pose.orientation.z
+        goal.target_pose.pose.orientation.w = Theta_based_pose.pose.orientation.w
 
         # Sends the goal to the action server.
-        print('Sending goal...')
+        print('Sending goal using move base to {},{},with orientation{}'.format(Theta_based_pose.pose.position.x,Theta_based_pose.pose.position.y,Theta_based_pose.pose.orientation.w))
         client.send_goal(goal)
         wait = client.wait_for_result()
         if not wait:
@@ -137,24 +142,49 @@ class TurtleBot:
             # Result of executing the action
             return client.get_result()
 
-    def move_robot_to_point(self, x, y, w=1):
+    def move_robot_to_point(self, Theta_based_pose):
         try:
             print('starting move_base')
-            result = self._move_robot_to_point(x, y, w)
+            result = self._move_robot_to_point(Theta_based_pose)
             if result:
-                rospy.loginfo("Goal execution done!")
+                print("Goal execution done!")
             else:
-                rospy.loginfo("Goal unachievable!")
+                print("Goal unachievable!")
             return result
         except rospy.ROSInterruptException:
-            rospy.loginfo("Navigation test finished.")
+            print("Navigation test finished.")
 
-    def run(self, x, y):
-        print("need to come closer to point {},{}".format(x, y))
-        self.move_robot_to_point(x-0.5, y)
-        print("start moving towards the sphere".format(x-0.5, y))
-        move_line()
+    def run(self, V, Theta):
+        #TODO: get V and theta, and understand how to locate the robot in the position that represant the Theta
+        Theta_based_pose = PoseStamped()
+        Theta_based_pose = calculate_position(Theta) #calculate the wanted position
+        print("based of Theat {},robot need to move to position {},{},{} and orientation {},{},{},{}".format(Theta,Theta_based_pose.pose.position.x,Theta_based_pose.pose.position.y,Theta_based_pose.pose.position.z,Theta_based_pose.pose.orientation.x,Theta_based_pose.pose.orientation.y,Theta_based_pose.pose.orientation.z,Theta_based_pose.pose.orientation.w))
+        self.move_robot_to_point(Theta_based_pose)
+        print("start moving towards the sphere in {}, {}".format(SPHERE_INIT_POS_X, SPHERE_INIT_POS_Y))
+        #TODO: move the robot using move line but pass as argument the V. make sure that the V is legal.
+        move_line(V)
         print("robot finished it's job")
+
+def calculate_position(theta_deg):
+    # Convert theta to radians
+    theta_rad = math.radians(theta_deg)
+    # Calculate the new position
+    desired_distance = 0.5
+    new_x = desired_distance * math.cos(theta_rad)
+    new_y = desired_distance * math.sin(theta_rad)
+    #Create a PoseStamped message
+    goal_pose = PoseStamped()
+    goal_pose.header.frame_id = 'map'
+    goal_pose.pose.position.x = new_x
+    goal_pose.pose.position.y = new_y
+    # Calculate the orientation to face towards the origin (0,0)
+    orientation_rad = math.atan2(-new_y, -new_x)  # Calculate the angle towards the origin
+    orientation_quaternion = quaternion_from_euler(0, 0, orientation_rad)
+    goal_pose.pose.orientation.x = orientation_quaternion[0]
+    goal_pose.pose.orientation.y = orientation_quaternion[1]
+    goal_pose.pose.orientation.z = orientation_quaternion[2]
+    goal_pose.pose.orientation.w = orientation_quaternion[3]
+    return goal_pose
 
 
 # If the python node is executed as main process (sourced directly)
@@ -164,7 +194,19 @@ if __name__ == '__main__':
     tb3 = TurtleBot()
     print("Sphere initial position: {}, {}".format(
         SPHERE_INIT_POS_X, SPHERE_INIT_POS_Y))
-    tb3.run(SPHERE_INIT_POS_X, SPHERE_INIT_POS_Y)
-    # TODO: collect sphere location and print it
+
+    #Run function input: the RL agent gives V and Theta   
+     
+    #TODO: get V,Theta from arguments
+
+    tb3.run(0.22, 45) #pass V = 0.22 and Theta 45
     Processing_flag = True  # now we will get the loction
+    #TODO: get the sphere location after the run is finished. 
+
+    #Run function output: sphere location
+
+    #RL Agent input - sphere location (from run function), target location (from argument)
+
+    
+
     rospy.spin()
