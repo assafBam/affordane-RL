@@ -50,7 +50,7 @@ def move_line(vel):
     start_time = rospy.Time.now()
     # TODO: set shorter interval, check location of sphere and save it, and if the location didn't change between 2 intervals, stop.
     # TODO: get the location of the sphere by setting Proccesing_flag to True
-    duration = rospy.Duration.from_sec(5)
+    duration = rospy.Duration.from_sec(0.5*1/vel)
     while rospy.Time.now() - start_time < duration:
         pub.publish(twist)
         r.sleep()
@@ -207,8 +207,9 @@ def robot_move_and_hit(V, Theta):
         SPHERE_INIT_POS_X, SPHERE_INIT_POS_Y))
 
     tb3.run(V, Theta)
+    rospy.sleep(1+(V*np.sqrt(1/0.044))/(0.4*9.81)) #wait for a ball to stop - (v_r*Sqrt(m_r/m_b))/(mu*g)
     Processing_flag = True  # now we will get the loction
-    rospy.sleep(2) #wait for a short time to receive some data
+    rospy.sleep(2) #wait to get updated data
     print("cordinates at the end are {},{},{}".format(SPHERE_END_POS_X,SPHERE_END_POS_Y,SPHERE_END_POS_Z))
         
     # Stop the ROS node and exit the program
