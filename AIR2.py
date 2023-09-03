@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+from __future__ import print_function
 import rospy
 import yaml
 import os
@@ -26,6 +26,15 @@ from rospy import Duration
 from gazebo_msgs.msg import ModelStates
 import math
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
+import os
+
+###########################################################
+########### log the position of the ball helper ###########
+PIPE_ENV_VAR = 'AIR2_PIPE_WRITE'
+pipe_write_fd = int(os.environ.get(PIPE_ENV_VAR, os.sys.stdout.fileno()))
+
+def final_position_logger(x):
+    os.write(pipe_write_fd, bytes(str(x)+'\n', 'ascii'))
 
 
 SPHERE_INIT_POS_X = 0
@@ -34,7 +43,7 @@ Processing_flag = False
 SPHERE_END_POS_X = None
 SPHERE_END_POS_Y = None
 SPHERE_END_POS_Z = None
-
+ROBOT_DISTANCE_FROM_BALL = 1
 
 def move_line(vel):
     twist = Twist()
@@ -50,7 +59,7 @@ def move_line(vel):
     start_time = rospy.Time.now()
     # TODO: set shorter interval, check location of sphere and save it, and if the location didn't change between 2 intervals, stop.
     # TODO: get the location of the sphere by setting Proccesing_flag to True
-    duration = rospy.Duration.from_sec(0.5*1/vel)
+    duration = rospy.Duration.from_sec((ROBOT_DISTANCE_FROM_BALL*1/vel)+0.3)#time to stop according to X=VT
     while rospy.Time.now() - start_time < duration:
         pub.publish(twist)
         r.sleep()
@@ -109,10 +118,10 @@ class TurtleBot:
 
         # Process the object's location data
         # (e.g., print it or use it in further computations)
-        print("Sphere location - x:", SPHERE_END_POS_X, "y:", SPHERE_END_POS_Y, "z:", SPHERE_END_POS_Z)
+        # print("Sphere location - x:", SPHERE_END_POS_X, "y:", SPHERE_END_POS_Y, "z:", SPHERE_END_POS_Z)
 
         # Unsubscribe from the model_states topic so we will get the return value only once
-        self.model_states_sub.unregister()
+        # self.model_states_sub.unregister()
         return
        
 
@@ -170,14 +179,14 @@ class TurtleBot:
             SPHERE_INIT_POS_X, SPHERE_INIT_POS_Y))
         # TODO: move the robot using move line but pass as argument the V. make sure that the V is legal.
         move_line(V)
-        print("robot finished it's job")
+        print("robot finished it's job and ball is rolling")
 
 
 def calculate_position(theta_rad):
     # Convert theta to radians
     #theta_rad = math.radians(theta_deg)
     # Calculate the new position
-    desired_distance = 0.5
+    desired_distance = ROBOT_DISTANCE_FROM_BALL
     new_x = desired_distance * math.cos(theta_rad)
     new_y = desired_distance * math.sin(theta_rad)
     # Create a PoseStamped message
@@ -207,9 +216,8 @@ def robot_move_and_hit(V, Theta):
         SPHERE_INIT_POS_X, SPHERE_INIT_POS_Y))
 
     tb3.run(V, Theta)
-    rospy.sleep(1+(V*np.sqrt(1/0.044))/(0.4*9.81)) #wait for a ball to stop - (v_r*Sqrt(m_r/m_b))/(mu*g)
     Processing_flag = True  # now we will get the loction
-    rospy.sleep(2) #wait to get updated data
+    rospy.sleep(3) #wait for a ball to roll for 3 seconds and then get it location
     print("cordinates at the end are {},{},{}".format(SPHERE_END_POS_X,SPHERE_END_POS_Y,SPHERE_END_POS_Z))
         
     # Stop the ROS node and exit the program
@@ -219,5 +227,6 @@ def robot_move_and_hit(V, Theta):
 
 # If the python node is executed as main process (sourced directly)
 if __name__ == '__main__':
-    x,y,z = robot_move_and_hit(0.22,0.785) #0.22 M/S AND 45
+    x,y,z = robot_move_and_hit(0.22, np.pi) #0.22 M/S AND 180
     print("loc is {},{},{}".format(x,y,z))
+    final_position_logger((x,y,z))

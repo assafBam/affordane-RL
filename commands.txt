@@ -9,7 +9,7 @@ roslaunch MRS_236609 turtlebot3_AIR2.launch
 
 ------------------------------------------------------
 
-xvfb-run -s "-screen 0 1400x900x24" roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/my_ws/src/MRS_236609/maps/map3.yaml rviz:=true\
+xvfb-run -s "-screen 0 1400x900x24" roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/my_ws/src/MRS_236609/maps/map3.yaml rviz:=true
 
 ------------------------------------------------------
 
