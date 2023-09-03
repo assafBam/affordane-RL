@@ -31,10 +31,16 @@ import os
 ###########################################################
 ########### log the position of the ball helper ###########
 PIPE_ENV_VAR = 'AIR2_PIPE_WRITE'
+PIPE_R_ENV_VAR = 'AIR2_PIPE_READ'
 pipe_write_fd = int(os.environ.get(PIPE_ENV_VAR, os.sys.stdout.fileno()))
+pipe_read_fd = int(os.environ.get(PIPE_R_ENV_VAR, os.sys.stdout.fileno()))
 
 def final_position_logger(x,y,z):
     os.write(pipe_write_fd, bytes('({X},{Y},{Z})\n'.format(X=x,Y=y,Z=z)))
+def get_V_theta():
+    print('reaf pipe fd: {}'.format(pipe_read_fd))
+    pipe_read_file = os.fdopen(pipe_read_fd)
+    return eval(pipe_read_file.read())
 
 
 SPHERE_INIT_POS_X = 0
@@ -227,6 +233,9 @@ def robot_move_and_hit(V, Theta):
 
 # If the python node is executed as main process (sourced directly)
 if __name__ == '__main__':
-    x,y,z = robot_move_and_hit(0.22, np.pi) #0.22 M/S AND 180
+    print('starting')
+    v,theta = get_V_theta()
+    print('v:{}, theta:{}'.format(v,theta))
+    x,y,z = robot_move_and_hit(v, theta) #0.22 M/S AND 180
     print("ball's final location is {},{},{}".format(x,y,z))
     final_position_logger(x,y,z)
