@@ -233,9 +233,11 @@ def robot_move_and_hit(V, Theta):
 
 # If the python node is executed as main process (sourced directly)
 if __name__ == '__main__':
-    print('starting')
-    v,theta = get_V_theta()
-    print('v:{}, theta:{}'.format(v,theta))
+    # print('starting')
+    # v,theta = get_V_theta()
+    # print('v:{}, theta:{}'.format(v,theta))
+    v = 0.09
+    theta = np.pi
     x,y,z = robot_move_and_hit(v, theta) #0.22 M/S AND 180
     print("ball's final location is {},{},{}".format(x,y,z))
-    final_position_logger(x,y,z)
+    # final_position_logger(x,y,z)
