@@ -33,8 +33,8 @@ import os
 PIPE_ENV_VAR = 'AIR2_PIPE_WRITE'
 pipe_write_fd = int(os.environ.get(PIPE_ENV_VAR, os.sys.stdout.fileno()))
 
-def final_position_logger(x):
-    os.write(pipe_write_fd, bytes(str(x)+'\n', 'ascii'))
+def final_position_logger(x,y,z):
+    os.write(pipe_write_fd, bytes('({X},{Y},{Z})\n'.format(X=x,Y=y,Z=z)))
 
 
 SPHERE_INIT_POS_X = 0
@@ -228,5 +228,5 @@ def robot_move_and_hit(V, Theta):
 # If the python node is executed as main process (sourced directly)
 if __name__ == '__main__':
     x,y,z = robot_move_and_hit(0.22, np.pi) #0.22 M/S AND 180
-    print("loc is {},{},{}".format(x,y,z))
-    final_position_logger((x,y,z))
+    print("ball's final location is {},{},{}".format(x,y,z))
+    final_position_logger(x,y,z)
