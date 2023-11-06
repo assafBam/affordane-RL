@@ -80,6 +80,10 @@ To get started with our project, follow these steps:
 2. Refer to the `/code` directory for code and scripts.
 3. Explore the `/docs` directory for detailed project documentation.
 
+## Lab Report
+
+- [Read the Lab Report](docs/AIR2_Project.pdf)
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE), allowing you to use the code and resources for your research and development.
