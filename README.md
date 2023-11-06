@@ -82,7 +82,7 @@ To get started with our project, follow these steps:
 
 ## Lab Report
 
-- [Read the Lab Report](/docs/AIR2_Project.pdf)
+- [Read the Lab Report](/docs/AIR2_project.pdf)
 
 ## License
 
