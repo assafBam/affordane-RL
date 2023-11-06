@@ -10,6 +10,10 @@ This repository contains the code and resources for a research project focused o
 
 - **Iteration and Learning:** The system iteratively fine-tunes robot actions to maximize the chances of striking the ball with the right velocity and angle, leading it to the target point.
 
+## Instructed by Assistant Professor Sarah Keren
+
+This project was made possible with the invaluable guidance and support of Assistant Professor Sarah Keren. Her expertise and mentorship played a pivotal role in the successful execution of this research.
+
 ## System Design
 
 The project involves a well-structured system design that governs its operation:
@@ -45,7 +49,6 @@ The project involves a well-structured system design that governs its operation:
     - The process stops when the RL agent has reached a predefined convergence criterion or a set number of epochs.
 
 These sequential steps define the core functioning of our project, orchestrating the learning and improvement of the robot's ball-striking skills within the Gazebo simulation environment.
-
 
 ## Challenges Faced in the Project
 
