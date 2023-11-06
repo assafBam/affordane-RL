@@ -1,6 +1,8 @@
-# Reinforcement Learning for Ball Striking in a Golf-like Setting
+# Reinforcement Learning for Ball Striking in a Golf-like Setting, Instructed by Assistant Professor Sarah Keren
 
 This repository contains the code and resources for a research project focused on reinforcement learning (RL) in the context of ball striking, akin to golf. The project aims to teach a robot to strike a stationary ball with the optimal velocity and angle, allowing it to roll to a specified target point. The work is inspired by real-world robotics applications and utilizes a Gazebo-based simulation environment.
+
+This project was conducted as part of our bachelor's degree program in Computer Science at the Technion - Israel Institute of Technology, in collaboration with the CLAIR laboratory (Collaborative Robotics & Artificial Intelligence Lab, [clair.cs.technion.ac.il](https://clair.cs.technion.ac.il/)). It was made possible with the invaluable guidance and support of Assistant Professor Sarah Keren. Her expertise and mentorship played a pivotal role in the successful execution of this research.
 
 ## Project Overview
 
@@ -9,10 +11,6 @@ This repository contains the code and resources for a research project focused o
 - **Reinforcement Learning:** The project employs RL techniques, including Deep Deterministic Policy Gradients (DDPG), Soft Actor-Critic (SAC), and Proximal Policy Optimization (PPO).
 
 - **Iteration and Learning:** The system iteratively fine-tunes robot actions to maximize the chances of striking the ball with the right velocity and angle, leading it to the target point.
-
-## Instructed by Assistant Professor Sarah Keren
-
-This project was made possible with the invaluable guidance and support of Assistant Professor Sarah Keren. Her expertise and mentorship played a pivotal role in the successful execution of this research.
 
 ## System Design
 
