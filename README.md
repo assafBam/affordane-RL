@@ -86,7 +86,7 @@ To get started with our project, follow these steps:
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE), allowing you to use the code and resources for your research and development.
+This project is licensed under the [MIT License](https://opensource.org/license/mit/), allowing you to use the code and resources for your research and development.
 
 ## Contact
 
