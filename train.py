@@ -19,18 +19,7 @@ action_noise = NormalActionNoise(mean=np.zeros(n_actions), sigma=0.1 * np.ones(n
 checkpoint_callback = CheckpointCallback(save_freq=100, save_path='./logs/',name_prefix='ddpg', save_vecnormalize=True)
 
 model = DDPG("MlpPolicy", env, action_noise=action_noise, verbose=1)
-# model = DDPG("MlpPolicy", env, verbose=1)
 model.learn(total_timesteps=n_epoch, log_interval=10, callback=checkpoint_callback)
 model.save("ddpg_affordance")
 print('done')
 print_rewards_graph()
-# vec_env = model.get_env()
-
-# del model # remove to demonstrate saving and loading
-
-# model = DDPG.load("ddpg_affordance")
-
-# obs = vec_env.reset()
-# while input()!=None:
-#     action, _states = model.predict(obs)
-#     obs, rewards, dones, info = vec_env.step(action)
