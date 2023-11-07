@@ -75,19 +75,37 @@ These challenges demonstrate the depth and complexity of your research-oriented 
 
 - `/docs`: Here, you'll find the documentation and resources that support the project.
 
-## Getting Started
+# Getting Started
 
-To get started with our project, follow these steps:
+Welcome to our project! To get started, follow these simple steps:
 
-1. Clone the repository to your local machine.
-2. Refer to the `/code` directory for code and scripts.
-3. Explore the `/docs` directory for detailed project documentation.
-4. To train one of the models with our environment run `train.py` with the following parameters:
-   1. number of epochs, default is 1000
-   2. algorithm to use in the training process, ether `ddpg`, `ppo`, or `sac`, the default is `ddpg`.
-      * note that in order to specify an algorithm the number of epochs parameter must be provided.
-5. After training the reward is shown as a graph of reward/epoch
-6. In order to check a small number of samples manually run `test.py` with the same parameters as `train.py`
+### 1. Clone the Repository
+
+Begin by cloning this repository to your local machine.
+
+### 2. Code and Scripts
+
+Navigate to the `/code` directory to access the project's source code and various scripts.
+
+### 3. Project Documentation
+
+For comprehensive project documentation, explore the `/docs` directory.
+
+### 4. Training the Models
+
+To train one of the models within our environment, run the `train.py` script. You can customize the training process using the following parameters:
+   - Specify the number of epochs (default is 1000).
+   - Choose the reinforcement learning algorithm you want to use during training. Options include `ddpg`, `ppo`, or `sac`, with `ddpg` as the default.
+   
+*Note:* When selecting an algorithm, make sure to provide the number of epochs parameter as well.
+
+### 5. Visualization of Training Progress
+
+After training, the reward distribution is displayed as a graph, showing reward values across epochs.
+
+### 6. Manual Testing
+
+To manually test the models with a small number of samples, execute the `test.py` script. Use the same parameters as in `train.py` to specify the algorithm and the number of epochs for testing.
 
 ## Lab Report
 
@@ -104,30 +122,3 @@ For inquiries or collaborations, feel free to contact us at [asafephraim@gmail.c
 Happy experimenting!
 
 Assaf Bamberger & Asaf Ephraim
-
-
-
-
-
-
-
-####################################################################
-####################################################################
-####################################################################
-####################################################################
-####################################################################
-####################################################################
-####################################################################
-
-
-
-
-
-# affordane-RL
-Needed locations for each file:
-1. Launch file - ~/my_ws/src/MRS_236609/launch/assignment1
-2. World file - ~/my_ws/src/MRS_236609/worlds
-3. Python file - ~/my_ws/src/MRS_236609/scripts
-
-RL Problem Modeling and Experiment Protocol:
-https://docs.google.com/document/d/1NxH732ylhoQes8UqfHj81YX21MqGW3dFeCUbb5oIsB8/edit?usp=sharing 
