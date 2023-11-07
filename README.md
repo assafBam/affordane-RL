@@ -64,7 +64,7 @@ The project presented several challenges that required innovative solutions:
 
 6. **Robustness to Initial Conditions:** Ensuring that learned behaviors were robust to different initial conditions was a significant challenge. The RL agent needed to adapt to various configurations, including variations in the ball's target hole position.
 
-These challenges demonstrate the depth and complexity of your research-oriented system, showcasing the diverse skills and expertise required to successfully complete the project.
+These challenges demonstrate the depth and complexity of your research-oriented system, showcasing the diverse skills and expertise required to complete the project.
 
 ## Repository Structure
 
@@ -79,6 +79,12 @@ To get started with our project, follow these steps:
 1. Clone the repository to your local machine.
 2. Refer to the `/code` directory for code and scripts.
 3. Explore the `/docs` directory for detailed project documentation.
+4. To train one of the models with our environment run `train.py` with the following parameters:
+   1. number of epochs, default is 1000
+   2. algorithm to use in the training process, ether `ddpg`, `ppo`, or `sac`, the default is `ddpg`.
+      * note that in order to specify an algorithm the number of epochs parameter must be provided.
+5. After training the reward is shown as a graph of reward/epoch
+6. In order to check a small number of samples manually run `test.py` with the same parameters as `train.py`
 
 ## Lab Report
 
