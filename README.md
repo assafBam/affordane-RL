@@ -67,27 +67,48 @@ The project presented several challenges that required innovative solutions:
 These challenges demonstrate the depth and complexity of your research-oriented system, showcasing the diverse skills and expertise required to complete the project.
 
 ## Repository Structure
+Explore the organization of our project repository:
 
-- `/code`: This directory contains the source code for the project, including scripts for simulation and RL training.
-   * `AIR2.py`: this file is the script for the robot. The robot is receiving its location, goal, velocity, and angle end striking the ball with seid velocity at the aforementioned angle.
-   * `run.py`: runs the shell scripts at `commands.txt`. Each script in `commands.txt` (separated with `---...---`) runs with a different process and the results of the script that starts with the `#!` sign are collected using pipes.
-   * `environment.py`: defines the environment for the RL algorithms. uses `run.py` or performs its own simpler calculations.
+- `/code`: In this directory, you'll find the source code and essential scripts for the project. It includes the following files:
+   * `AIR2.py`: A pivotal robot script responsible for receiving information about its position, target goal, velocity, and angle to strike the ball with precision. This script not only calculates the final location of the ball, facilitating        distance measurements from the target goal, but also orchestrates the Gazebo simulation, controlling the robot to perform the ball strike.
+     
+   * `run.py`: This script serves as an automated conductor for executing commands from the commands.txt file. Each command in commands.txt, demarcated by ---...---, operates in a distinct process. Results from commands commencing with #! are       systematically collected through pipes. Importantly, run.py effectively coordinates the execution of the AIR2.py script within the Gazebo simulation environment. This automation ensures that the simulation seamlessly progresses from           one iteration to the next without necessitating manual intervention to restart the simulation after each cycle.
 
-- `/docs`: Here, you'll find the documentation and resources that support the project.
+   * `environment.py`: This fundamental script plays an essential role in shaping the environment for the RL algorithms' training. Its versatile nature enables it to expertly manage the run.py script, bridging the gap between the Gazebo             simulation, the TurtleBot3's ball-striking actions, and the RL agent. It acts as the conduit through which essential data flows from run.py to the RL agent, providing the agent with the necessary information to optimize velocity (V) and       angle (Theta). Furthermore, environment.py facilitates the transmission of these crucial V and Theta values from the RL agent to run.py, ensuring a seamless iterative process. Whether orchestrating the operations of run.py or                  independently performing vital calculations, environment.py lies at the heart of the training process.
+
+- `/docs`: This directory houses documentation and additional project resources to support your understanding of the work.
 
 ## Getting Started
 
-To get started with our project, follow these steps:
+Welcome to our project! To get started, follow these simple steps:
 
-1. Clone the repository to your local machine.
-2. Refer to the `/code` directory for code and scripts.
-3. Explore the `/docs` directory for detailed project documentation.
-4. To train one of the models with our environment run `train.py` with the following parameters:
-   1. number of epochs, default is 1000
-   2. algorithm to use in the training process, ether `ddpg`, `ppo`, or `sac`, the default is `ddpg`.
-      * note that in order to specify an algorithm the number of epochs parameter must be provided.
-5. After training the reward is shown as a graph of reward/epoch
-6. In order to check a small number of samples manually run `test.py` with the same parameters as `train.py`
+1. **Clone the Repository**
+
+   - Begin by cloning this repository to your local machine.
+
+2. **Code and Scripts**
+
+   - Navigate to the `/code` directory to access the project's source code and various scripts.
+
+3. **Project Documentation**
+
+   - For comprehensive project documentation, explore the `/docs` directory.
+
+4. **Training the Models**
+
+   - To train one of the models within our environment, run the `train.py` script. You can customize the training process using the following parameters:
+      - Specify the number of epochs (default is 1000).
+      - Choose the reinforcement learning algorithm you want to use during training. Options include `ddpg`, `ppo`, or `sac`, with `ddpg` as the default.
+   
+   *Note:* When selecting an algorithm, make sure to provide the number of epochs parameter as well.
+
+5. **Visualization of Training Progress**
+
+   - After training, the reward distribution is displayed as a graph, showing reward values across epochs.
+
+6. **Manual Testing**
+
+   - To manually test the models with a small number of samples, execute the `test.py` script. Use the same parameters as in `train.py` to specify the algorithm and the number of epochs for testing.
 
 ## Lab Report
 
@@ -104,30 +125,3 @@ For inquiries or collaborations, feel free to contact us at [asafephraim@gmail.c
 Happy experimenting!
 
 Assaf Bamberger & Asaf Ephraim
-
-
-
-
-
-
-
-####################################################################
-####################################################################
-####################################################################
-####################################################################
-####################################################################
-####################################################################
-####################################################################
-
-
-
-
-
-# affordane-RL
-Needed locations for each file:
-1. Launch file - ~/my_ws/src/MRS_236609/launch/assignment1
-2. World file - ~/my_ws/src/MRS_236609/worlds
-3. Python file - ~/my_ws/src/MRS_236609/scripts
-
-RL Problem Modeling and Experiment Protocol:
-https://docs.google.com/document/d/1NxH732ylhoQes8UqfHj81YX21MqGW3dFeCUbb5oIsB8/edit?usp=sharing 
