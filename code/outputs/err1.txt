@@ -1,0 +1,13 @@
+WARNING: Package name "MRS_236609" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+WARNING: Package name "MRS_236609" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+xacro: in-order processing became default in ROS Melodic. You can drop the option.
+WARNING: Package name "MRS_236609" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+WARNING: Package name "MRS_236609" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+WARNING: Package name "MRS_236609" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+[1;33mWarning [parser.cc:950][0m XML Element[mu], child of element[inertial] not defined in SDF. Ignoring[mu]. You may have an incorrect SDF file, or an sdformat version that doesn't support this element.
+[ERROR] [1693766757.258993, 86.985000]: Spawn service failed. Exiting.
+[31m[spawn_urdf-2] process has died [pid 15819, exit code 1, cmd /opt/ros/melodic/lib/gazebo_ros/spawn_model -urdf -model turtlebot3 -x -1.0 -y 0.0 -z 0.0 -param robot_description __name:=spawn_urdf __log:=/home/assaf/.ros/log/1a43736a-4a8a-11ee-860e-e839df4cf769/spawn_urdf-2.log].
+log file: /home/assaf/.ros/log/1a43736a-4a8a-11ee-860e-e839df4cf769/spawn_urdf-2*.log[0m
+Terminated
+[31m[gazebo-1] process has died [pid 15814, exit code 143, cmd /opt/ros/melodic/lib/gazebo_ros/gzserver -e ode /home/assaf/my_ws/src/MRS_236609/worlds/AIR2.world __name:=gazebo __log:=/home/assaf/.ros/log/1a43736a-4a8a-11ee-860e-e839df4cf769/gazebo-1.log].
+log file: /home/assaf/.ros/log/1a43736a-4a8a-11ee-860e-e839df4cf769/gazebo-1*.log[0m

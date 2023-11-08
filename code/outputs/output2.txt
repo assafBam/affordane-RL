@@ -1,0 +1,199 @@
+xacro: in-order processing became default in ROS Melodic. You can drop the option.
+... logging to /home/assaf/.ros/log/1a43736a-4a8a-11ee-860e-e839df4cf769/roslaunch-assaf-comp-unix-15882.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;/opt/ros/melodic/share/turtlebot3_navigation/launch/turtlebot3_navigation.launch
+[1mstarted roslaunch server http://assaf-comp-unix:39145/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /amcl/base_frame_id: base_footprint
+ * /amcl/gui_publish_rate: 50.0
+ * /amcl/initial_pose_a: 0.0
+ * /amcl/initial_pose_x: 0.0
+ * /amcl/initial_pose_y: 0.0
+ * /amcl/kld_err: 0.02
+ * /amcl/laser_lambda_short: 0.1
+ * /amcl/laser_likelihood_max_dist: 2.0
+ * /amcl/laser_max_beams: 180
+ * /amcl/laser_max_range: 3.5
+ * /amcl/laser_model_type: likelihood_field
+ * /amcl/laser_sigma_hit: 0.2
+ * /amcl/laser_z_hit: 0.5
+ * /amcl/laser_z_max: 0.05
+ * /amcl/laser_z_rand: 0.5
+ * /amcl/laser_z_short: 0.05
+ * /amcl/max_particles: 3000
+ * /amcl/min_particles: 500
+ * /amcl/odom_alpha1: 0.1
+ * /amcl/odom_alpha2: 0.1
+ * /amcl/odom_alpha3: 0.1
+ * /amcl/odom_alpha4: 0.1
+ * /amcl/odom_frame_id: odom
+ * /amcl/odom_model_type: diff
+ * /amcl/recovery_alpha_fast: 0.0
+ * /amcl/recovery_alpha_slow: 0.0
+ * /amcl/resample_interval: 1
+ * /amcl/transform_tolerance: 0.5
+ * /amcl/update_min_a: 0.2
+ * /amcl/update_min_d: 0.2
+ * /move_base/DWAPlannerROS/acc_lim_theta: 3.2
+ * /move_base/DWAPlannerROS/acc_lim_x: 2.5
+ * /move_base/DWAPlannerROS/acc_lim_y: 0.0
+ * /move_base/DWAPlannerROS/controller_frequency: 10.0
+ * /move_base/DWAPlannerROS/forward_point_distance: 0.325
+ * /move_base/DWAPlannerROS/goal_distance_bias: 20.0
+ * /move_base/DWAPlannerROS/latch_xy_goal_tolerance: False
+ * /move_base/DWAPlannerROS/max_scaling_factor: 0.2
+ * /move_base/DWAPlannerROS/max_vel_theta: 2.75
+ * /move_base/DWAPlannerROS/max_vel_trans: 0.22
+ * /move_base/DWAPlannerROS/max_vel_x: 0.22
+ * /move_base/DWAPlannerROS/max_vel_y: 0.0
+ * /move_base/DWAPlannerROS/min_vel_theta: 1.37
+ * /move_base/DWAPlannerROS/min_vel_trans: 0.11
+ * /move_base/DWAPlannerROS/min_vel_x: -0.22
+ * /move_base/DWAPlannerROS/min_vel_y: 0.0
+ * /move_base/DWAPlannerROS/occdist_scale: 0.02
+ * /move_base/DWAPlannerROS/oscillation_reset_dist: 0.05
+ * /move_base/DWAPlannerROS/path_distance_bias: 32.0
+ * /move_base/DWAPlannerROS/publish_cost_grid_pc: True
+ * /move_base/DWAPlannerROS/publish_traj_pc: True
+ * /move_base/DWAPlannerROS/scaling_speed: 0.25
+ * /move_base/DWAPlannerROS/sim_time: 1.5
+ * /move_base/DWAPlannerROS/stop_time_buffer: 0.2
+ * /move_base/DWAPlannerROS/vth_samples: 40
+ * /move_base/DWAPlannerROS/vx_samples: 20
+ * /move_base/DWAPlannerROS/vy_samples: 0
+ * /move_base/DWAPlannerROS/xy_goal_tolerance: 0.05
+ * /move_base/DWAPlannerROS/yaw_goal_tolerance: 0.17
+ * /move_base/base_local_planner: dwa_local_planner...
+ * /move_base/conservative_reset_dist: 3.0
+ * /move_base/controller_frequency: 10.0
+ * /move_base/controller_patience: 15.0
+ * /move_base/global_costmap/cost_scaling_factor: 3.0
+ * /move_base/global_costmap/footprint: [[-0.105, -0.105]...
+ * /move_base/global_costmap/global_frame: map
+ * /move_base/global_costmap/inflation_radius: 1.0
+ * /move_base/global_costmap/map_type: costmap
+ * /move_base/global_costmap/observation_sources: scan
+ * /move_base/global_costmap/obstacle_range: 3.0
+ * /move_base/global_costmap/publish_frequency: 10.0
+ * /move_base/global_costmap/raytrace_range: 3.5
+ * /move_base/global_costmap/robot_base_frame: base_footprint
+ * /move_base/global_costmap/scan/clearing: True
+ * /move_base/global_costmap/scan/data_type: LaserScan
+ * /move_base/global_costmap/scan/marking: True
+ * /move_base/global_costmap/scan/sensor_frame: base_scan
+ * /move_base/global_costmap/scan/topic: scan
+ * /move_base/global_costmap/static_map: True
+ * /move_base/global_costmap/transform_tolerance: 0.5
+ * /move_base/global_costmap/update_frequency: 10.0
+ * /move_base/local_costmap/cost_scaling_factor: 3.0
+ * /move_base/local_costmap/footprint: [[-0.105, -0.105]...
+ * /move_base/local_costmap/global_frame: odom
+ * /move_base/local_costmap/height: 3
+ * /move_base/local_costmap/inflation_rXmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+[33m[ WARN] [1693766760.497605180, 88.521000000]: global_costmap: Parameter "plugins" not provided, loading pre-Hydro parameters[0m
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+[33m[ WARN] [1693766761.397705931, 89.013000000]: local_costmap: Parameter "plugins" not provided, loading pre-Hydro parameters[0m
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+XmbTextListToTextProperty result code -2
+[31m================================================================================REQUIRED process [rviz-5] has died!
+process has died [pid 16170, exit code -15, cmd /opt/ros/melodic/lib/rviz/rviz -d /opt/ros/melodic/share/turtlebot3_navigation/rviz/turtlebot3_navigation.rviz __name:=rviz __log:=/home/assaf/.ros/log/1a43736a-4a8a-11ee-860e-e839df4cf769/rviz-5.log].
+log file: /home/assaf/.ros/log/1a43736a-4a8a-11ee-860e-e839df4cf769/rviz-5*.log
+Initiating shutdown!
+================================================================================[0m
+[0m[ INFO] [1693766760.591092645, 88.569000000]: global_costmap: Using plugin "static_layer"[0m
+[0m[ INFO] [1693766760.623758867, 88.584000000]: Requesting the map...[0m
+[0m[ INFO] [1693766760.840049315, 88.694000000]: Resizing costmap to 384 X 384 at 0.050000 m/pix[0m
+[0m[ INFO] [1693766761.019590123, 88.797000000]: Received a 384 X 384 map at 0.050000 m/pix[0m
+[0m[ INFO] [1693766761.033955988, 88.808000000]: global_costmap: Using plugin "obstacle_layer"[0m
+[0m[ INFO] [1693766761.050737547, 88.815000000]:     Subscribed to Topics: scan[0m
+[0m[ INFO] [1693766761.148608808, 88.867000000]: global_costmap: Using plugin "inflation_layer"[0m
+[0m[ INFO] [1693766761.557638401, 89.112000000]: local_costmap: Using plugin "obstacle_layer"[0m
+[0m[ INFO] [1693766761.578342285, 89.129000000]:     Subscribed to Topics: scan[0m
+[0m[ INFO] [1693766761.680847275, 89.194000000]: local_costmap: Using plugin "inflation_layer"[0m
+[0m[ INFO] [1693766761.887729629, 89.300000000]: Created local_planner dwa_local_planner/DWAPlannerROS[0m
+[0m[ INFO] [1693766761.898819608, 89.303000000]: Sim period is set to 0.10[0m
+[0m[ INFO] [1693766762.458321921, 89.586000000]: Recovery behavior will clear layer 'obstacles'[0m
+[0m[ INFO] [1693766762.483593464, 89.602000000]: Recovery behavior will clear layer 'obstacles'[0m
+[0m[ INFO] [1693766762.644910628, 89.674000000]: odom received![0m
+adius: 1.0
+ * /move_base/local_costmap/map_type: costmap
+ * /move_base/local_costmap/observation_sources: scan
+ * /move_base/local_costmap/obstacle_range: 3.0
+ * /move_base/local_costmap/publish_frequency: 10.0
+ * /move_base/local_costmap/raytrace_range: 3.5
+ * /move_base/local_costmap/resolution: 0.05
+ * /move_base/local_costmap/robot_base_frame: base_footprint
+ * /move_base/local_costmap/rolling_window: True
+ * /move_base/local_costmap/scan/clearing: True
+ * /move_base/local_costmap/scan/data_type: LaserScan
+ * /move_base/local_costmap/scan/marking: True
+ * /move_base/local_costmap/scan/sensor_frame: base_scan
+ * /move_base/local_costmap/scan/topic: scan
+ * /move_base/local_costmap/static_map: False
+ * /move_base/local_costmap/transform_tolerance: 0.5
+ * /move_base/local_costmap/update_frequency: 10.0
+ * /move_base/local_costmap/width: 3
+ * /move_base/oscillation_distance: 0.2
+ * /move_base/oscillation_timeout: 10.0
+ * /move_base/planner_frequency: 5.0
+ * /move_base/planner_patience: 5.0
+ * /move_base/shutdown_costmaps: False
+ * /robot_description: <?xml version="1....
+ * /robot_state_publisher/publish_frequency: 50.0
+ * /robot_state_publisher/tf_prefix: 
+ * /rosdistro: melodic
+ * /rosversion: 1.14.13
+
+NODES
+  /
+    amcl (amcl/amcl)
+    map_server (map_server/map_server)
+    move_base (move_base/move_base)
+    robot_state_publisher (robot_state_publisher/robot_state_publisher)
+    rviz (rviz/rviz)
+
+[1mROS_MASTER_URI=http://localhost:11311[0m
+]2;/opt/ros/melodic/share/turtlebot3_navigation/launch/turtlebot3_navigation.launch http://localhost:11311
+[1mprocess[robot_state_publisher-1]: started with pid [16145][0m
+[1mprocess[map_server-2]: started with pid [16146][0m
+[1mprocess[amcl-3]: started with pid [16147][0m
+[1mprocess[move_base-4]: started with pid [16149][0m
+[1mprocess[rviz-5]: started with pid [16170][0m
+[rviz-5] killing on exit
+[amcl-3] killing on exit
+[move_base-4] killing on exit
+[map_server-2] killing on exit
+[robot_state_publisher-1] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/assaf/my_ws/src/MRS_236609/scripts/AIR2.py", line 28, in <module>
+    from tf.transformations import euler_from_quaternion, quaternion_from_euler
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/tf/__init__.py", line 30, in <module>
+    from tf2_ros import TransformException as Exception, ConnectivityException, LookupException, ExtrapolationException
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/tf2_ros/__init__.py", line 38, in <module>
+    from tf2_py import *
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/tf2_py/__init__.py", line 38, in <module>
+    from ._tf2 import *
+ImportError: dynamic module does not define module export function (PyInit__tf2)

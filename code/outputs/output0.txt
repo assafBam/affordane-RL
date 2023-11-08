@@ -1,0 +1,30 @@
+... logging to /home/assaf/.ros/log/1a43736a-4a8a-11ee-860e-e839df4cf769/roslaunch-assaf-comp-unix-15725.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;roscore
+[1mstarted roslaunch server http://assaf-comp-unix:36353/[0m
+ros_comm version 1.14.13
+
+
+SUMMARY
+========
+
+PARAMETERS
+ * /rosdistro: melodic
+ * /rosversion: 1.14.13
+
+NODES
+
+auto-starting new master
+[1mprocess[master]: started with pid [15735][0m
+[1mROS_MASTER_URI=http://assaf-comp-unix:11311/[0m
+]2;roscore http://assaf-comp-unix:11311/
+[1msetting /run_id to 1a43736a-4a8a-11ee-860e-e839df4cf769[0m
+[1mprocess[rosout-1]: started with pid [15748][0m
+started core service [/rosout]
+[rosout-1] killing on exit
+[master] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m

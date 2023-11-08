@@ -1,0 +1,32 @@
+[0m[ INFO] [1693766756.001563350]: Finished loading Gazebo ROS API Plugin.[0m
+[0m[ INFO] [1693766756.008138696]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...[0m
+... logging to /home/assaf/.ros/log/1a43736a-4a8a-11ee-860e-e839df4cf769/roslaunch-assaf-comp-unix-15792.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;/home/assaf/my_ws/src/MRS_236609/launch/assignment1/turtlebot3_AIR2.launch
+[1mstarted roslaunch server http://assaf-comp-unix:33337/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /gazebo/enable_ros_network: True
+ * /robot_description: <?xml version="1....
+ * /rosdistro: melodic
+ * /rosversion: 1.14.13
+ * /use_sim_time: True
+
+NODES
+  /
+    gazebo (gazebo_ros/gzserver)
+    spawn_urdf (gazebo_ros/spawn_model)
+
+[1mROS_MASTER_URI=http://localhost:11311[0m
+]2;/home/assaf/my_ws/src/MRS_236609/launch/assignment1/turtlebot3_AIR2.launch http://localhost:11311
+[1mprocess[gazebo-1]: started with pid [15814][0m
+[1mprocess[spawn_urdf-2]: started with pid [15819][0m
+all processes on machine have died, roslaunch will exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m

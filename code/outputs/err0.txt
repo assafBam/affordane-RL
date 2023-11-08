@@ -1,0 +1,5 @@
+[31m================================================================================REQUIRED process [master] has died!
+process has died [pid 15735, exit code -15, cmd rosmaster --core -p 11311 -w 3 __log:=/home/assaf/.ros/log/1a43736a-4a8a-11ee-860e-e839df4cf769/master.log].
+log file: /home/assaf/.ros/log/1a43736a-4a8a-11ee-860e-e839df4cf769/master*.log
+Initiating shutdown!
+================================================================================[0m
