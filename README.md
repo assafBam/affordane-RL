@@ -69,14 +69,23 @@ These challenges demonstrate the depth and complexity of your research-oriented 
 ## Repository Structure
 Explore the organization of our project repository:
 
-- `/code`: In this directory, you'll find the source code and essential scripts for the project. It includes the following files:
-   * `AIR2.py`: A pivotal robot script responsible for receiving information about its position, target goal, velocity, and angle to strike the ball with precision. This script not only calculates the final location of the ball, facilitating        distance measurements from the target goal, but also orchestrates the Gazebo simulation, controlling the robot to perform the ball strike.
-     
-   * `run.py`: This script serves as an automated conductor for executing commands from the commands.txt file. Each command in commands.txt, demarcated by ---...---, operates in a distinct process. Results from commands commencing with #! are       systematically collected through pipes. Importantly, run.py effectively coordinates the execution of the AIR2.py script within the Gazebo simulation environment. This automation ensures that the simulation seamlessly progresses from           one iteration to the next without necessitating manual intervention to restart the simulation after each cycle.
+- `/docs`
+This directory houses documentation and additional project resources to support your understanding of the work.
 
-   * `environment.py`: This fundamental script plays an essential role in shaping the environment for the RL algorithms' training. Its versatile nature enables it to expertly manage the run.py script, bridging the gap between the Gazebo             simulation, the TurtleBot3's ball-striking actions, and the RL agent. It acts as the conduit through which essential data flows from run.py to the RL agent, providing the agent with the necessary information to optimize velocity (V) and       angle (Theta). Furthermore, environment.py facilitates the transmission of these crucial V and Theta values from the RL agent to run.py, ensuring a seamless iterative process. Whether orchestrating the operations of run.py or                  independently performing vital calculations, environment.py lies at the heart of the training process.
+- `/code`
+In this directory, you'll find the source code and essential scripts for the project.
 
-- `/docs`: This directory houses documentation and additional project resources to support your understanding of the work.
+- **train.py**:
+This script is the orchestrator of the training process. When activated, it calls upon environment.py to set the stage for RL algorithms. train.py initializes the environment, activates the specified RL agent according to the chosen algorithm (indicated by argument), and establishes a crucial connection between the environment and the RL agent. It plays a pivotal role in orchestrating the iterative learning process, defining the number of desired epochs through the provided argument.
+
+- **environment.py**:
+This foundational script shapes the environment for RL algorithm training. Its versatile nature enables it to expertly manage the run.py script, bridging the gap between the Gazebo simulation, the TurtleBot3's ball-striking actions, and the RL agent. It acts as the conduit through which essential data flows from run.py to the RL agent, providing the agent with the necessary information to optimize velocity (V) and angle (Theta). Furthermore, environment.py facilitates the transmission of these crucial V and Theta values from the RL agent to run.py, ensuring a seamless iterative process. Whether orchestrating the operations of run.py or independently performing vital calculations, environment.py lies at the heart of the training process. It essentially manages the environment, ensuring smooth interactions between the Gazebo simulation, the robot's actions, and the RL agent.
+
+- **run.py**:
+This script serves as an automated conductor for executing commands from the commands.txt file. Each command in commands.txt, demarcated by ---...---, operates in a distinct process. Results from commands commencing with #! are systematically collected through pipes. Importantly, run.py effectively coordinates the execution of the AIR2.py script within the Gazebo simulation environment. This automation ensures that the simulation seamlessly progresses from one iteration to the next without necessitating manual intervention to restart the simulation after each cycle.
+
+- **AIR2.py**:
+A pivotal robot script responsible for receiving information about its position, target goal, velocity, and angle to strike the ball with precision. This script not only calculates the final location of the ball, facilitating distance measurements from the target goal, but also orchestrates the Gazebo simulation, controlling the robot to perform the ball strike.
 
 ## Getting Started
 
